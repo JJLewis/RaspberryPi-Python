@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 pin = 7
 
@@ -9,5 +10,6 @@ GPIO.setup(pin, GPIO.IN)
 input = GPIO.input(pin)
 
 while True:
-  if (GPIO.input(pin)):
-    print("In Range")
+	if !(GPIO.input(pin)):
+		print("In Range")
+	time.sleep(1)
