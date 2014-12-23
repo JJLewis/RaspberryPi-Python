@@ -14,7 +14,7 @@ for pin in right:
 	GPIO.setup(pin, GPIO.OUT)
 	GPIO.output(pin, 0)
 
-seq = [[1,0,0,0],
+left_seq = [[1,0,0,0],
 [1,1,0,0],
 [0,1,0,0],
 [0,1,1,0],
@@ -23,14 +23,23 @@ seq = [[1,0,0,0],
 [0,0,0,1],
 [1,0,0,1]]
 
+right_seq = [[0,0,0,1],
+[0,0,1,1],
+[0,0,1,0],
+[0,1,1,0],
+[0,1,0,0],
+[1,1,0,0],
+[1,0,0,0],
+[1,0,0,1]]
+
 revolutions = 5
 
 for r in range(revolutions):
 	for i in range(512):
 		for halfstep in range(8):
 			for pin in range(4):
-				GPIO.output(left[pin], seq[halfstep][pin])
-				GPIO.output(right[pin], seq[halfstep][pin])
+				GPIO.output(left[pin], left_seq[halfstep][pin])
+				GPIO.output(right[pin], right_seq[halfstep][pin])
 			time.sleep(0.001)
 			#time.sleep(0.1)
 
